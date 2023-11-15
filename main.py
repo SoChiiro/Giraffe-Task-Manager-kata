@@ -1,12 +1,18 @@
-idGlobal = 0
 class Task:
     allTask = []
-    def __init__(self, description,idGlobal=idGlobal):
+    idGlobal = 0
+    def __init__(self, description):
         self.description = description
-        idGlobal = idGlobal + 1
-        self.id = idGlobal
+        Task.idGlobal = Task.idGlobal + 1
+        self.id = Task.idGlobal
         self.status = "TODO"
     
+    # Adding a task to the list of tasks
     def addTask(description):
         Task.allTask.append(Task(description))
 
+    # Removing a task from the list of tasks
+    def removeTask(id):
+        for task in Task.allTask:
+            if task.id == id:
+                Task.allTask.remove(task)
