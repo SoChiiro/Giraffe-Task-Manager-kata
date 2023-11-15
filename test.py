@@ -7,3 +7,7 @@ def test_id_AddTask():
     Task.addTask("test 2")
     assert Task.allTask[-1].id == 2
 
+def test_removeTask():
+    Task.removeTask(1)
+    assert Task.allTask[0].description == "test 2"
+    assert Task.allTask[0].id == 2
