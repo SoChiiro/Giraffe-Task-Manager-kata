@@ -1,6 +1,8 @@
 class Task:
     allTask = []
     idGlobal = 0
+    
+    # Constructor
     def __init__(self, description):
         self.description = description
         Task.idGlobal = Task.idGlobal + 1
@@ -17,8 +19,14 @@ class Task:
             if task.id == id:
                 Task.allTask.remove(task)
 
-    #Setting a task to done
+    #Setting a task to 'done'
     def setTaskToDone(id):
         for task in Task.allTask:
             if task.id == id and task.status == "TODO":
                 task.status = "DONE"
+    
+    #Setting a task to 'to do'
+    def setTaskToDo(id):
+        for task in Task.allTask:
+            if task.id == id and task.status == "DONE":
+                task.status = "TODO"

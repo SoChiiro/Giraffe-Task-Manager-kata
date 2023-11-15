@@ -16,3 +16,7 @@ def test_setTaskToDone():
     Task.setTaskToDone(2)
     assert Task.allTask[0].status == "DONE"
     
+def test_setTaskToDo():
+    Task.setTaskToDo(2)
+    assert Task.allTask[0].status == "TODO"  
+    
