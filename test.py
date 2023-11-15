@@ -1,4 +1,6 @@
 from main import Task
+from main import InteractionLoop
+
 def test_description_AddTask():
     Task.addTask("Test for adding task")
     assert Task.allTask[-1].description == "Test for adding task"
@@ -18,5 +20,17 @@ def test_setTaskToDone():
     
 def test_setTaskToDo():
     Task.setTaskToDo(2)
-    assert Task.allTask[0].status == "TODO"  
+    assert Task.allTask[0].status == "TODO" 
+
+def test_printAllTasks():
+    assert Task.printAllTasks() == "2 [ ] test 2\n"
     
+def test_parse():
+    InteractionLoop.parse("+ Learn Python")
+    assert Task.allTask[-1].description == "Learn Python"
+    InteractionLoop.parse("- 3")
+    assert Task.allTask[-1].description == "test 2"
+    InteractionLoop.parse("x 2")
+    assert Task.allTask[-1].status == "DONE"
+    InteractionLoop.parse("o 2")
+    assert Task.allTask[-1].status == "TODO"
