@@ -46,7 +46,7 @@ class Task:
         return stringBuilder
 
 class InteractionLoop:
-
+    isLooping = True
     # Parse user input
     def parse(userInput):
         operator = userInput.split(" ")[0]
@@ -59,11 +59,17 @@ class InteractionLoop:
         elif operator == "o":
             Task.setTaskToDo(int(userInput.split(" ")[1]))
         elif operator == "q":
+            InteractionLoop.exitTheLoop()
             print("Bye!")
-            exit()
         else:
             print("Invalid command")
 
     # Loop for user input
     def loop():
-        userInput = input("Enter command: \n\t + <description> \n\t - <id> \n\t x <id> \n\t o <id> \n\t q \n")
+        while(InteractionLoop.isLooping):
+            userInput = input("Enter command: \n\t + <description> \n\t - <id> \n\t x <id> \n\t o <id> \n\t q \n")
+            InteractionLoop.parse(userInput)
+            Task.printAllTasks()
+    
+    def exitTheLoop():
+        InteractionLoop.isLooping = False

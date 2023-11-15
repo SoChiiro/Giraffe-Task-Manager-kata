@@ -34,3 +34,6 @@ def test_parse():
     assert Task.allTask[-1].status == "DONE"
     InteractionLoop.parse("o 2")
     assert Task.allTask[-1].status == "TODO"
+
+def test_loop():
+    InteractionLoop.loop()
