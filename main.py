@@ -16,3 +16,9 @@ class Task:
         for task in Task.allTask:
             if task.id == id:
                 Task.allTask.remove(task)
+
+    #Setting a task to done
+    def setTaskToDone(id):
+        for task in Task.allTask:
+            if task.id == id and task.status == "TODO":
+                task.status = "DONE"

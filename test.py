@@ -11,3 +11,8 @@ def test_removeTask():
     Task.removeTask(1)
     assert Task.allTask[0].description == "test 2"
     assert Task.allTask[0].id == 2
+    
+def test_setTaskToDone():
+    Task.setTaskToDone(2)
+    assert Task.allTask[0].status == "DONE"
+    
